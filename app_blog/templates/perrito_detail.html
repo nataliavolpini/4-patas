@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<p>
+    <strong>Nombre:</strong> {{object.nombre}}
+</p>
+<p>
+    <strong>Raza:</strong> {{object.raza}}
+</p>
+<p>
+    <strong>Fecha de Nacimiento:</strong> {{object.fecha_nacimiento}}
+</p>
+<p>
+    <strong>Descripcion:</strong> {{object.descripcion}}
+</p>
+
+<br>
+<a href="{% url 'mostrar_perritos' %}">Volver lista</a>
+<a href="{% url 'editar_perritos' object.id %}">Editar</a>
+
+{% endblock contenido %}

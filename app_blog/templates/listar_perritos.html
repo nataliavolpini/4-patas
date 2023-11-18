@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>Perritos</title>
+{% endblock titulo %}
+
+
+{% block contenido %}
+<h1> 
+    Perritos
+</h1>
+
+<a href="{% url 'crear_perritos' %}">Crear perrito</a>
+<br><br>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Raza</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% if  object_list  %}
+            {% for perrito in object_list %}
+            <tr>
+                <td>{{ perrito.id }}</td>
+                <td>{{ perrito.nombre }}</td>
+                <td>{{ perrito.raza }}</td>
+                <td>
+                    <a href="{% url 'ver_perritos' perrito.id %}">Leer mas</a>
+                </td>
+                <td>
+                    {% if user == perrito.creador %}
+                    <a href="{% url 'editar_perritos' perrito.id %}">Editar</a>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if user == perrito.creador %}
+                    <a href="{% url 'eliminar_perritos' perrito.id %}">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                    {% endif %}
+                {% endfor %}
+                {% else %} 
+                <h1> No hay perritos en la lista</h1>
+                    
+            {% endif %}                 
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock contenido %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+<title>nuestros_4patas - Inicio</title>
+{% endblock titulo %}
+
+
+{% block contenido %}
+{% if user.is_authenticated %}
+<h1>Bienvenido/a {{ user.last_name }}, {{ user.first_name }}</h1>
+{% else %}
+<h1>Bienvenido/a querido usuario!</h1>
+{% endif %}
+{% endblock contenido %}
